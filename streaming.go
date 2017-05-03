@@ -71,6 +71,7 @@ func (sp *streamProcessor) startOnce(ch chan<- bool) {
 				})
 			}
 		case patchEvent:
+			sp.config.Logger.Printf("In the patch")
 			var patch featurePatchData
 			if err := json.Unmarshal([]byte(event.Data()), &patch); err != nil {
 				sp.config.Logger.Printf("Unexpected error unmarshalling feature patch json: %+v", err)
